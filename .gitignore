@@ -1,3 +1,4 @@
 venv
 .idea
 chocolate.txt
+Resources/__pycache__
