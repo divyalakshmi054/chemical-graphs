@@ -1,2 +1,1 @@
-import Resources.Lines as ln
-import Resources.Points as pt
+import Resources.GeometricEntities as Ge
