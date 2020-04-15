@@ -7,6 +7,12 @@ class Point:
         self.x = float(x)
         self.y = float(y)
 
+    def __str__(self) -> str:
+        return "(" + str(self.x) + ", " + str(self.y) + ")"
+
+    def __repr__(self) -> str:
+        return "(" + str(self.x) + ", " + str(self.y) + ")"
+
     def cartesian_distance(self, p: Point) -> float:
         return math.sqrt((self.x - p.x) ** 2.0 + (self.y - p.y) ** 2.0)
 
