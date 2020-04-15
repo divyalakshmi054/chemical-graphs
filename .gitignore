@@ -2,3 +2,5 @@ venv
 .idea
 chocolate.txt
 __pycache__
+files.txt
+Test.py
