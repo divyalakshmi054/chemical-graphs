@@ -1,5 +1,8 @@
 from __future__ import annotations
 import math
+from typing import List
+from functools import cmp_to_key
+import Resources.Constants as Constants
 
 
 class Point:
@@ -34,3 +37,35 @@ class Line:
 
     def angle(self) -> float:
         return math.atan(self.slope())
+
+
+# TODO(anishbadhri): Auto determine scale using GCD method
+class Graph:
+
+    def __init__(self, points: List[Point], x_scale: float, y_scale: float) -> None:
+        self.points = points
+        self.x_scale = x_scale
+        self.y_scale = y_scale
+        self.assert_scale_matches()
+
+    def __repr__(self) -> str:
+        return str(self.points)
+
+    def assert_scale_matches(self):
+        for pt in self.points:
+            assert math.fabs((pt.x / self.x_scale) - (pt.x // self.x_scale)) < Constants.EPSILON and \
+                   math.fabs((pt.y / self.y_scale) - (pt.y // self.y_scale)) < Constants.EPSILON
+
+    def sort_graph_points(self):
+        def cmp(p1: Point, p2: Point):
+            if p1.x < p2.x:
+                return -1
+            elif p1.x > p2.x:
+                return 1
+            elif p1.y < p2.y:
+                return -1
+            elif p1.y > p2.y:
+                return 1
+            else:
+                return 0
+        sorted(self.points, key=cmp_to_key(cmp))
