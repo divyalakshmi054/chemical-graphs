@@ -2,7 +2,7 @@ from __future__ import annotations
 import math
 from typing import List
 from functools import cmp_to_key
-import Resources.Constants as Constants
+from .Constants import *
 
 
 class Point:
@@ -53,8 +53,8 @@ class Graph:
 
     def assert_scale_matches(self):
         for pt in self.points:
-            assert math.fabs((pt.x / self.x_scale) - (pt.x // self.x_scale)) < Constants.EPSILON and \
-                   math.fabs((pt.y / self.y_scale) - (pt.y // self.y_scale)) < Constants.EPSILON
+            assert math.fabs((pt.x / self.x_scale) - (pt.x // self.x_scale)) < EPSILON and \
+                   math.fabs((pt.y / self.y_scale) - (pt.y // self.y_scale)) < EPSILON
 
     def sort_graph_points(self):
         def cmp(p1: Point, p2: Point):

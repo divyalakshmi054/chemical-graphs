@@ -1,11 +1,8 @@
-import Resources.GeometricEntities as Ge
-import Resources.ErrorMargin as Em
+from .Resources.ErrorMargin import *
 from typing import List, Tuple
-import math
-import Resources.Constants as Constants
 
 
-def get_mismatch_points(ip: Ge.Graph, tp: Ge.Graph, err: Em.ErrorInterface) -> List[Tuple[Ge.Point, Ge.Point]]:
+def get_mismatch_points(ip: Graph, tp: Graph, err: ErrorInterface) -> List[Tuple[Point, Point]]:
     mismatch_points = []
     ip.sort_graph_points()
     tp.sort_graph_points()
@@ -16,7 +13,7 @@ def get_mismatch_points(ip: Ge.Graph, tp: Ge.Graph, err: Em.ErrorInterface) -> L
     return mismatch_points
 
 
-def get_recommended_points(ip: Ge.Graph, tp: Ge.Graph, err: Em.ErrorInterface, convergence: float = 0.5) -> Ge.Graph:
+def get_recommended_points(ip: Graph, tp: Graph, err: ErrorInterface, convergence: float = 0.5) -> Graph:
     assert 0 < convergence < 1
     final_graph = ip
     tp.sort_graph_points()

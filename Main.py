@@ -1,4 +1,3 @@
-import Resources.GeometricEntities as Ge
 import Input.InputInterface as Ii
 import argparse
 
