@@ -2,7 +2,7 @@ from __future__ import annotations
 import math
 from typing import List
 from functools import cmp_to_key
-from .Constants import *
+from chemical_graphs.Logic.Resources.Constants import EPSILON
 
 
 class Point:

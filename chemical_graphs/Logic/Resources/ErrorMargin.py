@@ -1,5 +1,5 @@
 import abc
-from .GeometricEntities import *
+from chemical_graphs.Logic.Resources.GeometricEntities import Point
 
 
 class ErrorInterface(abc.ABC):

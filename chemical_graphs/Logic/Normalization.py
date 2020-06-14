@@ -1,6 +1,6 @@
-from .Resources.GeometricEntities import *
 import math
-from .Resources.Constants import *
+from chemical_graphs.Logic.Resources.GeometricEntities import Graph, Line, Point
+from chemical_graphs.Logic.Resources.Constants import EPSILON
 
 
 class Normalize:
