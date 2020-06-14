@@ -1,4 +1,5 @@
-from .Resources.ErrorMargin import *
+from chemical_graphs.Logic.Resources.ErrorMargin import ErrorInterface
+from chemical_graphs.Logic.Resources.GeometricEntities import Graph, Point
 from typing import List, Tuple
 
 
@@ -25,4 +26,3 @@ def get_recommended_points(ip: Graph, tp: Graph, err: ErrorInterface, convergenc
         for i in range(0, len(final_graph.points)):
             assert final_graph.points[i].x == tp.points[i].x
             final_graph.points[i].y = convergence * tp.points[i].y + (1-convergence) * final_graph.points[i].y
-
