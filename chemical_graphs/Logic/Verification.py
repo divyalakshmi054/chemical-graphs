@@ -14,8 +14,7 @@ def get_mismatch_points(ip: Graph, tp: Graph, err: ErrorInterface) -> List[Tuple
     return mismatch_points
 
 
-def get_recommended_points(ip: Graph, tp: Graph, err: ErrorInterface, convergence: float = 0.5) -> Graph:
-    assert 0 < convergence < 1
+def get_recommended_points(ip: Graph, tp: Graph, err: ErrorInterface, convergence: float) -> Graph:
     final_graph = ip
     tp.sort_graph_points()
     while True:
