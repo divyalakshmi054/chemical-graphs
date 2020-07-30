@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import chemical_graphs
 
 
@@ -16,11 +17,9 @@ def parse_flags():
     args = parser.parse_args()
     args.error_margin = tuple(args.error_margin)
     if args.error_margin[0] <= 0 or args.error_margin[1] <= 0:
-        print("Error margin for both x and y-coordinate should be greater than 0")
-        quit(1)
+        raise Exception("Error margin for both x and y-coordinate should be greater than 0")
     if not 0 < args.rate_approach < 1:
-        print("Rate of approach to template graph should be between 0 and 1")
-        quit(1)
+        raise Exception("Rate of approach to template graph should be between 0 and 1")
     args = vars(args)
     return args
 
@@ -29,18 +28,34 @@ def get_points(filename):
     file = open(filename, 'r')
     points = []
     for line in file:
-        pt = line.split(',')
-        x = float(pt[0])
-        y = float(pt[1])
-        points.append((x, y))
+        try:
+            pt = line.split(',')
+            x = float(pt[0])
+            y = float(pt[1])
+            points.append((x, y))
+        except ValueError as e:
+            continue
     return points
 
 
 def convert_to_graph(points):
-    # Convert list of tuples to graph object
-    pass
+    return chemical_graphs.get_graph_object(points)
 
 
 if __name__ == '__main__':
     flags = parse_flags()
     error = chemical_graphs.get_error_object(flags["error_margin"])
+    template_graph = convert_to_graph(get_points(flags["template"]))
+    input_graph = convert_to_graph(get_points(flags["input"]))
+    result = []
+    if flags["cmp_pos"]:
+        result = chemical_graphs.compare_slope_and_pos(template_graph, input_graph, error, flags["rate_approach"])
+    else:
+        result = chemical_graphs.compare_slope(template_graph, input_graph, error, flags["rate_approach"])
+    print("Recommended points")
+    for i in result.points:
+        print(i)
+
+# TODO: Docker
+# TODO: Testing code
+# TODO: Documentation
