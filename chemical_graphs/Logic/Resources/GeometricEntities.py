@@ -46,7 +46,7 @@ class Graph:
         self.points = points
         self.x_scale = x_scale
         self.y_scale = y_scale
-        self.assert_scale_matches()
+        # self.assert_scale_matches()
 
     def __repr__(self) -> str:
         return str(self.points)
